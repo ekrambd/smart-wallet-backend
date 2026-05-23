@@ -456,7 +456,7 @@ class ApiController extends Controller
             // GET WALLET
             // =========================
             $wallet = Wallet::select('id','app_id','wallet_address')
-                ->where('app_id', user()->app_id)
+                //->where('app_id', user()->app_id)
                 ->where('wallet_address', $request->wallet_address)
                 ->first();
 
