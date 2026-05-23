@@ -277,7 +277,9 @@ class ApiController extends Controller
                 ], 422);  
             }
 
-            $wallet = Wallet::where('id',$request->wallet_id)->where('app_id',user()->app_id)->first();
+            //$wallet = Wallet::where('id',$request->wallet_id)->where('app_id',user()->app_id)->first();
+
+            $wallet = Wallet::where('id',$request->wallet_id)->first();
 
             if(!$wallet){
             	return response()->json(['status'=>false, 'message'=>'No data found', 'data'=>new \stdClass()],404);
