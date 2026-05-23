@@ -22,7 +22,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
 		Route::post('device-logout', [ApiController::class, 'deviceLogout']);
 		Route::post('generate-wallet-address', [ApiController::class, 'generateWalletAddress']);
 		Route::post('import-wallet-address', [ApiController::class, 'importWalletAddress']);
-		Route::post('wallet-details', [ApiController::class, 'walletDetails']);
+		
 		Route::post('my-contracts', [ApiController::class, 'myContracts']);
 		Route::post('contract-details', [ApiController::class, 'contractDetails']);
 		Route::post('save-contract', [ApiController::class, 'saveContract']);
@@ -39,3 +39,6 @@ Route::middleware(['throttle:60,1'])->group(function () {
 	});
 	
 });
+
+
+Route::post('wallet-details', [ApiController::class, 'walletDetails']);
