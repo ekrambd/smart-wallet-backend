@@ -615,11 +615,11 @@ class ApiController extends Controller
                 ], 422);
             }
 
-            $count = Contract::where('contract_address',$request->contract_address)->where('user_id',user()->id)->count();
+            // $count = Contract::where('contract_address',$request->contract_address)->where('user_id',user()->id)->count();
 
-            if($count > 0){
-                return response()->json(['status'=>false, 'contract_id'=>0, 'message'=>'The contract already has been taken', 'data'=>new \stdClass()],429);
-            }
+            // if($count > 0){
+            //     return response()->json(['status'=>false, 'contract_id'=>0, 'message'=>'The contract already has been taken', 'data'=>new \stdClass()],429);
+            // }
 
             $contract = new Contract();
             $contract->user_id = user()->id;
