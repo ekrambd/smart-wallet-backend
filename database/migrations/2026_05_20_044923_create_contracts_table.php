@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('contract_name');
             $table->string('network')->defaut('bnb');
-            $table->string('contract_address')->unique()->nullable();
+            $table->string('contract_address')->nullable();
             $table->string('contract_symbol');
             $table->string('contract_decimals')->nullable();
             $table->string('image')->default('defaults/bnb_logo.png');
