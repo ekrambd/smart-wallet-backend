@@ -119,7 +119,9 @@ async function main() {
   } catch (err) {
 
     //console.log("failed to swap");
-    console.log(err.message);
+    //console.log(err.message);
+
+    console.log("failed to swap");
 
   }
 }

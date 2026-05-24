@@ -969,7 +969,7 @@ class ApiController extends Controller
 
             $privateKey = Crypt::decryptString($wallet->private_key);
 
-            $scriptPath = public_path('web3/tokenToBNB.js');
+            $scriptPath = public_path('web3/bnbToToken.js');
             $command = "/usr/bin/node $scriptPath $privateKey $contractTwo->contract_address $request->amount $contractTwo->contract_decimals";
             $output = shell_exec($command);
 
@@ -989,7 +989,7 @@ class ApiController extends Controller
                 'message' => $e->getMessage()
             ], 500);
         }
-    }
+    }v
 
     public function tokenToBnb(Request $request)
     {
