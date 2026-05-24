@@ -101,7 +101,7 @@ class ApiController extends Controller
    //  	{
    //  		$user = user();
    //  		$scriptPath = public_path('web3/erc20WalletGenerate.js');
-   //          $command = "node " . escapeshellarg($scriptPath);
+   //          $command = "/usr/bin/node " . escapeshellarg($scriptPath);
 			// $output = shell_exec($command);
 
 			// $wallet = json_decode($output, true);
@@ -141,13 +141,13 @@ class ApiController extends Controller
 
             /*
             |--------------------------------------------------------------------------
-            | Generate Wallet From Node Script
+            | Generate Wallet From /usr/bin/node Script
             |--------------------------------------------------------------------------
             */
 
             $scriptPath = public_path('web3/erc20WalletGenerate.js');
 
-            $command = "node " . escapeshellarg($scriptPath);
+            $command = "/usr/bin/node " . escapeshellarg($scriptPath);
 
             $output = shell_exec($command);
 
@@ -349,12 +349,12 @@ class ApiController extends Controller
 
             /*
             |--------------------------------------------------------------------------
-            | SAFE NODE CALL (STDIN)
+            | SAFE /usr/bin/node CALL (STDIN)
             |--------------------------------------------------------------------------
             */
 
             $process = proc_open(
-                "node {$scriptPath}",
+                "/usr/bin/node {$scriptPath}",
                 [
                     0 => ["pipe", "r"],
                     1 => ["pipe", "w"],
@@ -366,7 +366,7 @@ class ApiController extends Controller
             if (!is_resource($process)) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Node process failed'
+                    'message' => '/usr/bin/node process failed'
                 ], 500);
             }
 
@@ -581,7 +581,7 @@ class ApiController extends Controller
             }
 
             $scriptPath = public_path('web3/getTokenInfo.js');
-            $command = "node $scriptPath $request->contract_address";
+            $command = "/usr/bin/node $scriptPath $request->contract_address";
             $output = shell_exec($command);
             $result = json_decode($output,true);
             if($result['status'] == true){
@@ -663,7 +663,7 @@ class ApiController extends Controller
             $privateKey = Crypt::decryptString($wallet->private_key);
 
             $scriptPath = public_path('web3/bnbRange.js');
-            $command = "node $scriptPath $privateKey";
+            $command = "/usr/bin/node $scriptPath $privateKey";
             $output = shell_exec($command);
             $result = json_decode($output,true);
             return $result;
@@ -702,7 +702,7 @@ class ApiController extends Controller
             $amount = $request->amount;
 
             $scriptPath = public_path('web3/bnbTransaction.js');
-            $command = "node $scriptPath $privateKey $toAddress $amount";
+            $command = "/usr/bin/node $scriptPath $privateKey $toAddress $amount";
             $output = shell_exec($command);
             $result = trim($output);
 
@@ -763,7 +763,7 @@ class ApiController extends Controller
             $decimals = $contract->contract_decimals;
 
             $scriptPath = public_path('web3/tokenTransfer.js');
-            $command = "node $scriptPath $privateKey $toAddress $amount $contractAddress $decimals";
+            $command = "/usr/bin/node $scriptPath $privateKey $toAddress $amount $contractAddress $decimals";
             $output = shell_exec($command);
             $result = trim($output);
 
@@ -860,7 +860,7 @@ class ApiController extends Controller
             //$privateKey = Crypt::decryptString($wallet->private_key);
 
             $scriptPath = public_path('web3/tokenSwapPrice.js');
-            $command = "node $scriptPath $contractOne->contract_address $contractTwo->contract_address $request->amount $contractOne->contract_decimals $contractTwo->contract_decimals";
+            $command = "/usr/bin/node $scriptPath $contractOne->contract_address $contractTwo->contract_address $request->amount $contractOne->contract_decimals $contractTwo->contract_decimals";
             $output = shell_exec($command);
 
             $result = trim($output);
@@ -904,7 +904,7 @@ class ApiController extends Controller
             $privateKey = Crypt::decryptString($wallet->private_key);
 
             $scriptPath = public_path('web3/tokenTotoken.js');
-            $command = "node $scriptPath $privateKey $contractOne->contract_address $contractTwo->contract_address $request->amount $contractOne->contract_decimals $contractTwo->contract_decimals";
+            $command = "/usr/bin/node $scriptPath $privateKey $contractOne->contract_address $contractTwo->contract_address $request->amount $contractOne->contract_decimals $contractTwo->contract_decimals";
             $output = shell_exec($command);
 
             $result = trim($output);
@@ -970,7 +970,7 @@ class ApiController extends Controller
             $privateKey = Crypt::decryptString($wallet->private_key);
 
             $scriptPath = public_path('web3/tokenToBNB.js');
-            $command = "node $scriptPath $privateKey $contractTwo->contract_address $request->amount $contractTwo->contract_decimals";
+            $command = "/usr/bin/node $scriptPath $privateKey $contractTwo->contract_address $request->amount $contractTwo->contract_decimals";
             $output = shell_exec($command);
 
             $result = trim($output);
@@ -1021,7 +1021,7 @@ class ApiController extends Controller
             $privateKey = Crypt::decryptString($wallet->private_key);
 
             $scriptPath = public_path('web3/tokenToBNB.js');
-            $command = "node $scriptPath $privateKey $contractTwo->contract_address $request->amount $contractTwo->contract_decimals";
+            $command = "/usr/bin/node $scriptPath $privateKey $contractTwo->contract_address $request->amount $contractTwo->contract_decimals";
             $output = shell_exec($command);
 
             $result = trim($output);
@@ -1041,12 +1041,12 @@ class ApiController extends Controller
         }
     }
 
-    public function testNode()
+    public function test/usr/bin/node()
     {
         return response()->json([
             'shell_exec_exists' => function_exists('shell_exec'),
-            'node' => shell_exec('which node 2>&1'),
-            'version' => shell_exec('/usr/bin/node -v 2>&1'),
+            '/usr/bin/node' => shell_exec('which /usr/bin/node 2>&1'),
+            'version' => shell_exec('/usr/bin//usr/bin/node -v 2>&1'),
         ]);
     }
 }
