@@ -43,4 +43,4 @@ Route::middleware(['throttle:60,1'])->group(function () {
 
 Route::post('wallet-details', [ApiController::class, 'walletDetails']);
 
-Route::get('/test-node', [ApiController::class, 'testNode']);
+Route::get('/test-node', [ApiController::class, 'testNode']);//
