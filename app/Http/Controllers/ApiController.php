@@ -423,6 +423,9 @@ class ApiController extends Controller
             return response()->json([
                 'status' => true,
                 'wallet_id' => intval($data->id),
+                'wallet_address' => $data->wallet_address,
+                'qrcode'   => $data->qrcode,
+                //'mnemonic' => $request->mnemonic,
                 'message' => 'Successfully the wallet address has been added',
             ]);
 
@@ -778,7 +781,7 @@ class ApiController extends Controller
             $transaction->date = date('Y-m-d');
             $transaction->time = date('h:i:s a');
             $transaction->timestamp = time();
-            $transaction->transaction_hash = $result;
+            $transaction->transaction_hash = $result; 
             $transaction->save();
 
             return response()->json(['status'=>true, 'message'=>'Trancation Successfull', 'data'=>$transaction]);
@@ -912,7 +915,7 @@ class ApiController extends Controller
                 return response()->json(['status'=>false, 'message'=>'Something Went Wrong', 'transaction_hash'=>""],429);
             }
 
-            return response()->json(['status'=>false, 'message'=>'Successfully swap', 'transaction_hash'=>$result],200);
+            return response()->json(['status'=>true, 'message'=>'Successfully swap', 'transaction_hash'=>$result],200);
 
         }catch (Exception $e) {
             return response()->json([
@@ -978,7 +981,7 @@ class ApiController extends Controller
                 return response()->json(['status'=>false, 'message'=>'Something Went Wrong', 'transaction_hash'=>""],429);
             }
 
-            return response()->json(['status'=>false, 'message'=>'Successfully swap', 'transaction_hash'=>$result],200);
+            return response()->json(['status'=>true, 'message'=>'Successfully swap', 'transaction_hash'=>$result],200);
 
         }catch (Exception $e) {
             return response()->json([
@@ -1028,7 +1031,7 @@ class ApiController extends Controller
                 return response()->json(['status'=>false, 'message'=>'Something Went Wrong', 'transaction_hash'=>""],429);
             }
 
-            return response()->json(['status'=>false, 'message'=>'Successfully swap', 'transaction_hash'=>$result],200);
+            return response()->json(['status'=>true, 'message'=>'Successfully swap', 'transaction_hash'=>$result],200);
 
         }catch (Exception $e) {
             return response()->json([

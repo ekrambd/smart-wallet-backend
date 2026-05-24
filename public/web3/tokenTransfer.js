@@ -35,7 +35,9 @@ async function transferToken() {
 
     } catch (error) {
 
-        console.log(error.message);
+        //console.log(error.message);
+
+        console.log("failed to transaction");
 
     }
 }
