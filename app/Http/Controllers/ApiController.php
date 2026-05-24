@@ -480,7 +480,7 @@ class ApiController extends Controller
             // $contracts = Contract::where('user_id',1)->orWhere('user_id',user()->id)->paginate($request->per_page);
 
 
-            $contracts = Contract::where('app_id', $wallet->app_id)->paginate($per_page);
+            $contracts = Contract::paginate($per_page);
 
             // =========================
             // TRANSFORM WITH CACHE
