@@ -1040,4 +1040,11 @@ class ApiController extends Controller
             ], 500);
         }
     }
+
+    public function testNode()
+    {
+        $output = shell_exec('node -v 2>&1');
+
+        dd($output);
+    }
 }
