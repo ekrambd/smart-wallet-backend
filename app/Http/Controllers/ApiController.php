@@ -989,7 +989,7 @@ class ApiController extends Controller
                 'message' => $e->getMessage()
             ], 500);
         }
-    }v
+    }
 
     public function tokenToBnb(Request $request)
     {
