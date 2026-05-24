@@ -1041,12 +1041,12 @@ class ApiController extends Controller
         }
     }
 
-    public function test/usr/bin/node()
-    {
-        return response()->json([
-            'shell_exec_exists' => function_exists('shell_exec'),
-            '/usr/bin/node' => shell_exec('which /usr/bin/node 2>&1'),
-            'version' => shell_exec('/usr/bin//usr/bin/node -v 2>&1'),
-        ]);
-    }
+    // public function test/usr/bin/node()
+    // {
+    //     return response()->json([
+    //         'shell_exec_exists' => function_exists('shell_exec'),
+    //         '/usr/bin/node' => shell_exec('which /usr/bin/node 2>&1'),
+    //         'version' => shell_exec('/usr/bin//usr/bin/node -v 2>&1'),
+    //     ]);
+    // }
 }
